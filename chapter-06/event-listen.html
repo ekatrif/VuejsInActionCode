@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script src="https://unpkg.com/vue"></script>
-</head>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
   <body>
-  <div id="app">
-    {{counter}}<br/>
-    <button v-on:click="incrementCounter">Increment Counter</button>
-    <my-component v-on:increment-me="incrementCounter" ></my-component>
-  </div>
-  <script>
-  const MyComponent = {
-    template: `<div>
+    <div id="app">
+      {{counter}}<br />
+      <button v-on:click="incrementCounter">Increment Counter</button>
+      <my-component v-on:increment-me="incrementCounter"></my-component>
+    </div>
+    <script>
+      const MyComponent = {
+        template: `<div>
       <button v-on:click="childIncrementCounter">Increment From Child</button>
     </div>`,
-    methods: {
-      childIncrementCounter() {
-        this.$emit('increment-me');
-      }
-    }
-  }
-  new Vue({
-    el: '#app',
-    data() {
-        return {
-            counter: 0
-        }
-    },
-    methods: {
-      incrementCounter() {
-        this.counter++;
-      }
-    },
-    components: {'my-component': MyComponent}
-  });
-  </script>
+        methods: {
+          childIncrementCounter() {
+            this.$emit("increment-me");
+          },
+        },
+      };
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        methods: {
+          incrementCounter() {
+            this.counter++;
+          },
+        },
+        components: { "my-component": MyComponent },
+      });
+    </script>
   </body>
 </html>
